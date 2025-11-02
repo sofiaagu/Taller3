@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,29 +8,34 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float rotationSpeed = 720f; // grados/seg
+    [SerializeField] private float rotationSpeed = 720f;
 
-    [Header("Physics")]
+    [Header("Jump & Gravity")]
     [SerializeField] private float gravity = -9.81f;
+    [SerializeField] private float jumpHeight = 2f;
+
+    [Header("Low Friction Simulation")]
+    [Tooltip("Simula baja fricci√≥n: cuanto menor el valor, m√°s 'resbaloso' ser√° el movimiento.")]
+    [Range(0f, 1f)][SerializeField] private float friction = 0.05f;
 
     [Header("Optional")]
-    [Tooltip("Si se asigna, el movimiento ser· relativo a esta c·mara (ej: c·mara orbital).")]
+    [Tooltip("Si se asigna, el movimiento ser√° relativo a esta c√°mara (ej: c√°mara orbital).")]
     public Camera mouseOrbitCamera;
 
     private CharacterController controller;
     private Animator anim;
 
-    // Nuevo Input System: valor actual de la acciÛn "Move"
-    private Vector2 moveInput;           // x: izq-der, y: adelante-atr·s
-    private Vector3 velocity;            // para gravedad
+    private Vector2 moveInput;
+    private Vector3 velocity;
+    private Vector3 currentHorizontalVelocity; // ‚Üê velocidad con fricci√≥n
+    private bool isGroundedByTag = false; // ‚Üê Detecta si est√° tocando algo con tag "Ground"
 
-    // Hash para par·metros del Animator (evita typos y es m·s r·pido)
     private static readonly int VelX = Animator.StringToHash("velX");
     private static readonly int VelY = Animator.StringToHash("velY");
+    private static readonly int JumpTrigger = Animator.StringToHash("jump");
 
-    // Suavizado para el Blend Tree
     [SerializeField] private float animDamp = 0.05f;
-    private float velXCur, velYCur;      // internos para damping
+    private float velXCur, velYCur;
 
     private void Awake()
     {
@@ -38,26 +43,20 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // ====== NUEVO INPUT SYSTEM ======
-    // Este callback lo invoca PlayerInput cuando la acciÛn "Move" cambia.
-    // En el componente PlayerInput, asigna:
-    //   - Actions: tu InputActionAsset
-    //   - Behavior: Invoke Unity Events
-    //   - Events > Move: arrastra el Player y selecciona PlayerMovement.OnMove
+    // === NUEVO INPUT SYSTEM ===
     public void OnMove(InputAction.CallbackContext ctx)
     {
-        moveInput = ctx.ReadValue<Vector2>(); // (-1..1 , -1..1)
+        moveInput = ctx.ReadValue<Vector2>();
     }
 
     private void Update()
     {
-        // 1) Calcular direcciÛn de movimiento (relativa a c·mara si existe)
-        Vector3 input = new Vector3(moveInput.x, 0f, moveInput.y); // x=strafe, y=forward
+        // === MOVIMIENTO ===
+        Vector3 input = new Vector3(moveInput.x, 0f, moveInput.y);
 
         Vector3 moveWorld;
         if (mouseOrbitCamera != null && mouseOrbitCamera.gameObject.activeInHierarchy)
         {
-            // plano XZ de la c·mara
             Vector3 camFwd = mouseOrbitCamera.transform.forward;
             camFwd.y = 0f;
             camFwd.Normalize();
@@ -70,36 +69,57 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            // sin c·mara: usar el forward del personaje
             moveWorld = transform.right * input.x + transform.forward * input.z;
         }
 
-        // 2) Rotar hacia la direcciÛn de avance si hay input
-        Vector3 lookDir = new Vector3(moveWorld.x, 0f, moveWorld.z);
+        // --- Simulaci√≥n de baja fricci√≥n (aceleraci√≥n y desaceleraci√≥n suave) ---
+        Vector3 targetVelocity = moveWorld * moveSpeed;
+        currentHorizontalVelocity = Vector3.Lerp(currentHorizontalVelocity, targetVelocity, 1f - friction);
+
+        controller.Move(currentHorizontalVelocity * Time.deltaTime);
+
+        // === ROTACI√ìN ===
+        Vector3 lookDir = new Vector3(currentHorizontalVelocity.x, 0f, currentHorizontalVelocity.z);
         if (lookDir.sqrMagnitude > 0.0001f)
         {
             Quaternion targetRot = Quaternion.LookRotation(lookDir, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
         }
 
-        // 3) Mover con CharacterController
-        Vector3 horizontal = moveWorld * moveSpeed;
-        controller.Move(horizontal * Time.deltaTime);
+        // === SALTO CON ESPACIO + TAG GROUND ===
+        if (isGroundedByTag)
+        {
+            if (velocity.y < 0f)
+                velocity.y = -2f;
 
-        // 4) Gravedad
-        if (controller.isGrounded && velocity.y < 0f)
-            velocity.y = -2f; // pequeÒo empuje hacia el suelo para mantener grounded
+            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                if (anim != null)
+                    anim.SetTrigger(JumpTrigger);
+            }
+        }
+
+        // === GRAVEDAD ===
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        // 5) Enviar par·metros al Animator (Blend Tree 2D Freeform: velX, velY)
-        // velX/velY en el BlendTree deben ser el input local (x,y) del jugador.
-        // Usamos damping para que el punto rojo del Blend Tree se mueva suave.
-        velXCur = Mathf.SmoothDamp(velXCur, moveInput.x, ref velXCur, animDamp);
-        velYCur = Mathf.SmoothDamp(velYCur, moveInput.y, ref velYCur, animDamp);
-        anim.SetFloat(VelX, velXCur);
-        anim.SetFloat(VelY, velYCur);
+        // === ANIMACIONES ===
+        velXCur = Mathf.Lerp(velXCur, moveInput.x, animDamp);
+        velYCur = Mathf.Lerp(velYCur, moveInput.y, animDamp);
+        if (anim != null)
+        {
+            anim.SetFloat(VelX, velXCur);
+            anim.SetFloat(VelY, velYCur);
+        }
+    }
+
+    // === DETECCI√ìN DEL SUELO POR TAG "Ground" ===
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.CompareTag("Ground"))
+            isGroundedByTag = true;
+        else
+            isGroundedByTag = false;
     }
 }
-
-
