@@ -1,4 +1,5 @@
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerRespawn : MonoBehaviour
@@ -87,7 +88,7 @@ public class PlayerRespawn : MonoBehaviour
 
     private void GameOver()
     {
-        Debug.Log("�Game Over!");
+        Debug.Log("¡Game Over!");
 
         if (panelPerdiste != null)
         {
@@ -95,5 +96,10 @@ public class PlayerRespawn : MonoBehaviour
         }
 
         Time.timeScale = 0f;
+    }
+    public void ReiniciarNivel()
+    {
+        Time.timeScale = 1f; // ← reanuda el tiempo (por si está pausado)
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // ← recarga la escena actual
     }
 }

@@ -56917,6 +56917,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2718509369139944508, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1756121105}
+    - target: {fileID: 2718509369139944508, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReiniciarNivel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2718509369139944508, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerRespawn, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3046723132399808161, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -57000,6 +57012,10 @@ PrefabInstance:
     - target: {fileID: 4393786934685237853, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803116728837838364, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5556639745090369706, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
       propertyPath: playerHealth

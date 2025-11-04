@@ -45,11 +45,11 @@ public class PanelFinalController : MonoBehaviour
 
         // Mostrar puntaje total
         if (textoPuntaje != null)
-            textoPuntaje.text = "Puntaje total: " + GameManager.instance.Score.ToString();
+            textoPuntaje.text = "Score total: " + GameManager.instance.Score.ToString();
 
         // Mostrar ítems recolectados
         if (textoItems != null)
-            textoItems.text = "Energías recolectadas: " + GameManager.instance.ItemsCount.ToString();
+            textoItems.text = "Items recolectadas: " + GameManager.instance.ItemsCount.ToString();
 
         // Mostrar tiempo total formateado
         if (textoTiempo != null)
