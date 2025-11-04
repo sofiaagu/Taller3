@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerRespawn : MonoBehaviour
@@ -23,7 +23,7 @@ public class PlayerRespawn : MonoBehaviour
         controller = GetComponent<CharacterController>();
         vidasActuales = vidasIniciales;
 
-        // Si no hay punto de respawn, crear uno en la posición inicial
+        // Si no hay punto de respawn, crear uno en la posiciÃ³n inicial
         if (respawnPoint == null)
         {
             GameObject spawn = new GameObject("SpawnPoint");
@@ -43,8 +43,8 @@ public class PlayerRespawn : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        // Si toca una zona de muerte o un obstáculo (cubo)
-        if (hit.gameObject.CompareTag("DeathZone") || hit.gameObject.CompareTag("Obstacle"))
+        // Si toca una zona de muerte o un obstÃ¡culo (cubo)
+        if (hit.gameObject.CompareTag("DeathZone"))
         {
             PerderVida();
         }
@@ -80,7 +80,7 @@ public class PlayerRespawn : MonoBehaviour
 
     private void GameOver()
     {
-        Debug.Log("¡Game Over!");
+        Debug.Log("Â¡Game Over!");
 
         if (panelPerdiste != null)
             panelPerdiste.SetActive(true);

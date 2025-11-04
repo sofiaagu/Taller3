@@ -1,26 +1,25 @@
 ﻿using UnityEngine;
 
-public class Portal : MonoBehaviour
+public class PortalActivator : MonoBehaviour
 {
-    [Header("Portal a activar")]
-    public GameObject portal; // arrástralo en el inspector
+    [Header("Referencias")]
+    public GameObject portalVisual; // el modelo o efecto del portal
+    public GameManager gameManager; // referencia al GameManager
 
-    [Header("Puntos necesarios para activarlo")]
-    public int puntosNecesarios = 80;
-
-    private bool portalActivo = false;
-
-    void Update()
+    private void Start()
     {
-        //// Asegúrate de que existe una instancia del GameManager
-        //if (GameManager.instance == null || portal == null)
-        //    return;
+        if (portalVisual == null)
+            portalVisual = gameObject; // usa el propio objeto si no se asigna
+    }
 
-        //// Verifica si ya se cumplió la condición
-        //if (!portalActivo && GameManager.instance.score >= puntosNecesarios)
-        //{
-        //    portal.SetActive(true);
-        //    portalActivo = true;
-        //}
+    private void Update()
+    {
+        if (gameManager == null)
+            return;
+
+        // Condición: se muestra si tiene menos de 3 colisiones o más de 80 puntos
+        bool mostrar = gameManager.colisionesTotales < 3 || gameManager.score > 80;
+
+        portalVisual.SetActive(mostrar);
     }
 }

@@ -1,12 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CollectItem : MonoBehaviour
 {
-    public enum TipoEnergia { Peque�a, Grande, Fuego }
-    [Header("Configuraci�n del �tem")]
-    public TipoEnergia tipo = TipoEnergia.Peque�a;
+    public enum TipoEnergia { Pequeña, Grande, Fuego }
+    [Header("Configuración del ítem")]
+    public TipoEnergia tipo = TipoEnergia.Pequeña;
 
-    public int valorPeque�a = 2;
+    public int valorPequeña = 2;
     public int valorGrande = 5;
     public int valorFuego = 12;
 
@@ -18,24 +18,43 @@ public class CollectItem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            int valor = tipo == TipoEnergia.Peque�a ? valorPeque�a :
-             tipo == TipoEnergia.Grande ? valorGrande :
-             valorFuego;
+            if (other.CompareTag("Player"))
+            {
+                int valor = 0;
 
-            // Sumar puntos al GameManager (si existe)
-            //if (GameManager.instance != null)
-            //    GameManager.instance.SumarPuntos(valor);
+                switch (tipo)
+                {
+                    case TipoEnergia.Pequeña:
+                        valor = valorPequeña;
+                        break;
+                    case TipoEnergia.Grande:
+                        valor = valorGrande;
+                        break;
+                    case TipoEnergia.Fuego:
+                        valor = valorFuego;
+                        break;
+                }
 
-            // Reproducir sonido (si hay)
-            if (sonidoRecolectar != null)
-                AudioSource.PlayClipAtPoint(sonidoRecolectar, transform.position);
 
-            // Efecto visual (si hay)
-            if (efectoRecolectar != null)
-                Instantiate(efectoRecolectar, transform.position, Quaternion.identity);
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.AgregarPuntos(valor);
+                }
+                else
+                {
+                    Debug.LogWarning(" No se encontró el GameManager en la escena.");
+                }
+                // Reproducir sonido (si hay)
+                if (sonidoRecolectar != null)
+                    AudioSource.PlayClipAtPoint(sonidoRecolectar, transform.position);
 
-            // Destruir el objeto
-            Destroy(gameObject);
+                // Efecto visual (si hay)
+                if (efectoRecolectar != null)
+                    Instantiate(efectoRecolectar, transform.position, Quaternion.identity);
+
+                // Destruir el objeto
+                Destroy(gameObject);
+            }
         }
     }
 }
