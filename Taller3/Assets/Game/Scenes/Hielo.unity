@@ -7876,6 +7876,56 @@ MonoBehaviour:
   valorGrande: 5
   sonidoRecolectar: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
   efectoRecolectar: {fileID: 0}
+--- !u!1 &741532133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 741532135}
+  - component: {fileID: 741532134}
+  m_Layer: 0
+  m_Name: MenuManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &741532134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741532133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f7cce89384939d48b1b068394bc6dbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelPrincipal: {fileID: 0}
+  panelNiveles: {fileID: 0}
+  escenaSiguiente: Fuego
+  escenaNivel1: Fuego
+  escenaNivel2: Hielo
+  Menu: Menu
+--- !u!4 &741532135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741532133}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.317093, y: 4.364105, z: -14.726502}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &747646535 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3394502148483450971, guid: 6d35f3befa11c3f49ac6b0964dd94444, type: 3}
@@ -57173,3 +57223,4 @@ SceneRoots:
   - {fileID: 534958387}
   - {fileID: 41060327}
   - {fileID: 792754915}
+  - {fileID: 741532135}

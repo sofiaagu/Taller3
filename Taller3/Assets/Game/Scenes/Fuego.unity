@@ -6990,6 +6990,10 @@ PrefabInstance:
       propertyPath: contadorTMP
       value: 
       objectReference: {fileID: 985737554}
+    - target: {fileID: 2022551412160948575, guid: 8657b8f3e8378624caf158267585363e, type: 3}
+      propertyPath: panelMuerte
+      value: 
+      objectReference: {fileID: 985737553}
     - target: {fileID: 7580176909612704638, guid: 8657b8f3e8378624caf158267585363e, type: 3}
       propertyPath: m_Name
       value: Cube (18)
@@ -19647,6 +19651,10 @@ PrefabInstance:
       propertyPath: contadorTMP
       value: 
       objectReference: {fileID: 985737554}
+    - target: {fileID: 2022551412160948575, guid: 8657b8f3e8378624caf158267585363e, type: 3}
+      propertyPath: panelMuerte
+      value: 
+      objectReference: {fileID: 985737553}
     - target: {fileID: 7580176909612704638, guid: 8657b8f3e8378624caf158267585363e, type: 3}
       propertyPath: m_Name
       value: Cube (17)
@@ -35977,6 +35985,10 @@ PrefabInstance:
       propertyPath: contadorTMP
       value: 
       objectReference: {fileID: 985737554}
+    - target: {fileID: 2022551412160948575, guid: 8657b8f3e8378624caf158267585363e, type: 3}
+      propertyPath: panelMuerte
+      value: 
+      objectReference: {fileID: 985737553}
     - target: {fileID: 7580176909612704638, guid: 8657b8f3e8378624caf158267585363e, type: 3}
       propertyPath: m_Name
       value: Cube (16)
@@ -37120,7 +37132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1157782261704780405, guid: 165b44c90adbed542acd1f9164c5012f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -248.68
+      value: -239.31
       objectReference: {fileID: 0}
     - target: {fileID: 1157782261704780405, guid: 165b44c90adbed542acd1f9164c5012f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -37128,7 +37140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1157782261704780405, guid: 165b44c90adbed542acd1f9164c5012f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -26.2
+      value: -33.51
       objectReference: {fileID: 0}
     - target: {fileID: 1157782261704780405, guid: 165b44c90adbed542acd1f9164c5012f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -64321,6 +64333,10 @@ PrefabInstance:
       propertyPath: contadorTMP
       value: 
       objectReference: {fileID: 985737554}
+    - target: {fileID: 2022551412160948575, guid: 8657b8f3e8378624caf158267585363e, type: 3}
+      propertyPath: panelMuerte
+      value: 
+      objectReference: {fileID: 985737553}
     - target: {fileID: 7580176909612704638, guid: 8657b8f3e8378624caf158267585363e, type: 3}
       propertyPath: m_Name
       value: Cube (15)
@@ -64406,6 +64422,10 @@ PrefabInstance:
       propertyPath: contadorTMP
       value: 
       objectReference: {fileID: 985737554}
+    - target: {fileID: 2022551412160948575, guid: 8657b8f3e8378624caf158267585363e, type: 3}
+      propertyPath: panelMuerte
+      value: 
+      objectReference: {fileID: 985737553}
     - target: {fileID: 7580176909612704638, guid: 8657b8f3e8378624caf158267585363e, type: 3}
       propertyPath: m_Name
       value: Cube (14)
@@ -64618,6 +64638,14 @@ PrefabInstance:
       propertyPath: contadorTMP
       value: 
       objectReference: {fileID: 985737554}
+    - target: {fileID: 2022551412160948575, guid: 8657b8f3e8378624caf158267585363e, type: 3}
+      propertyPath: panelMuerte
+      value: 
+      objectReference: {fileID: 985737553}
+    - target: {fileID: 2022551412160948575, guid: 8657b8f3e8378624caf158267585363e, type: 3}
+      propertyPath: fuerzaEmpuje
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7580176909612704638, guid: 8657b8f3e8378624caf158267585363e, type: 3}
       propertyPath: m_Name
       value: Cube

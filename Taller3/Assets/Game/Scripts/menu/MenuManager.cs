@@ -11,6 +11,7 @@ public class MenuManager : MonoBehaviour
     public string escenaSiguiente = "Nivel1_Fuego"; // escena principal
     public string escenaNivel1 = "Nivel1_Fuego";
     public string escenaNivel2 = "Nivel2_Hielo";
+    public string Menu = "Menu";
 
     private void Start()
     {
@@ -66,5 +67,10 @@ public class MenuManager : MonoBehaviour
     {
         Debug.Log("Cargando Nivel 2...");
         SceneManager.LoadScene(escenaNivel2);
+    }
+    public void Reiniciar()
+    {
+        Debug.Log("Volviendo al menu...");
+        SceneManager.LoadScene(Menu);
     }
 }
