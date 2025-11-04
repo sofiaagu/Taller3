@@ -7,7 +7,7 @@ TagManager:
   - Ground
   - Enemy
   - DeathZone
-  - Energia
+  - Obstacle
   layers:
   - Default
   - TransparentFX

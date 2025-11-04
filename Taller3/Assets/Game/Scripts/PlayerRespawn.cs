@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerRespawn : MonoBehaviour
@@ -17,16 +16,14 @@ public class PlayerRespawn : MonoBehaviour
 
     private CharacterController controller;
 
-    public int CurrentLives
-    {
-        get => vidasActuales;
-    }
+    public int CurrentLives => vidasActuales;
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
         vidasActuales = vidasIniciales;
 
+        // Si no hay punto de respawn, crear uno en la posición inicial
         if (respawnPoint == null)
         {
             GameObject spawn = new GameObject("SpawnPoint");
@@ -38,18 +35,15 @@ public class PlayerRespawn : MonoBehaviour
     private void Start()
     {
         if (panelPerdiste != null)
-        {
             panelPerdiste.SetActive(false);
-        }
 
         if (healthUI != null)
-        {
             healthUI.UpdateHearts();
-        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        // Si toca una zona de muerte o un obstáculo (cubo)
         if (hit.gameObject.CompareTag("DeathZone"))
         {
             PerderVida();
@@ -61,9 +55,7 @@ public class PlayerRespawn : MonoBehaviour
         vidasActuales--;
 
         if (healthUI != null)
-        {
             healthUI.UpdateHearts();
-        }
 
         Debug.Log("Vida perdida. Vidas restantes: " + vidasActuales);
 
@@ -91,15 +83,8 @@ public class PlayerRespawn : MonoBehaviour
         Debug.Log("¡Game Over!");
 
         if (panelPerdiste != null)
-        {
             panelPerdiste.SetActive(true);
-        }
 
         Time.timeScale = 0f;
-    }
-    public void ReiniciarNivel()
-    {
-        Time.timeScale = 1f; // ← reanuda el tiempo (por si está pausado)
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // ← recarga la escena actual
     }
 }
