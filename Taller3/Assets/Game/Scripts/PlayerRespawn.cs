@@ -5,15 +5,27 @@ public class PlayerRespawn : MonoBehaviour
 {
     [Header("Respawn Settings")]
     [SerializeField] private Transform respawnPoint;
-    [SerializeField] private float fallLimit = -10f;
+
+    [Header("Vida")]
+    public int vidasIniciales = 3;
+    private int vidasActuales;
+
+    [Header("UI")]
+    public GameObject panelPerdiste;
+    public PlayerHealthUI healthUI;
 
     private CharacterController controller;
+
+    public int CurrentLives
+    {
+        get => vidasActuales;
+    }
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
+        vidasActuales = vidasIniciales;
 
-        // Si no asignas un punto de respawn, toma la posición inicial
         if (respawnPoint == null)
         {
             GameObject spawn = new GameObject("SpawnPoint");
@@ -22,10 +34,43 @@ public class PlayerRespawn : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void Start()
     {
-        // Si el jugador cae por debajo del límite, reinicia
-        if (transform.position.y < fallLimit)
+        if (panelPerdiste != null)
+        {
+            panelPerdiste.SetActive(false);
+        }
+
+        if (healthUI != null)
+        {
+            healthUI.UpdateHearts();
+        }
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("DeathZone"))
+        {
+            PerderVida();
+        }
+    }
+
+    private void PerderVida()
+    {
+        vidasActuales--;
+
+        if (healthUI != null)
+        {
+            healthUI.UpdateHearts();
+        }
+
+        Debug.Log("Vida perdida. Vidas restantes: " + vidasActuales);
+
+        if (vidasActuales <= 0)
+        {
+            GameOver();
+        }
+        else
         {
             Respawn();
         }
@@ -36,5 +81,19 @@ public class PlayerRespawn : MonoBehaviour
         controller.enabled = false;
         transform.position = respawnPoint.position;
         controller.enabled = true;
+
+        Debug.Log("Respawn");
+    }
+
+    private void GameOver()
+    {
+        Debug.Log("¡Game Over!");
+
+        if (panelPerdiste != null)
+        {
+            panelPerdiste.SetActive(true);
+        }
+
+        Time.timeScale = 0f;
     }
 }
