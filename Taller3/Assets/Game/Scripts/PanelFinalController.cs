@@ -41,7 +41,7 @@ public class PanelFinalController : MonoBehaviour
 
         // Mensaje de título
         if (textoTitulo != null)
-            textoTitulo.text = "¡Has completado la misión!";
+            textoTitulo.text = "¡GANASTE!";
 
         // Mostrar puntaje total
         if (textoPuntaje != null)
