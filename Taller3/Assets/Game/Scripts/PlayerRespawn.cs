@@ -29,9 +29,11 @@ public class PlayerRespawn : MonoBehaviour
         controller = GetComponent<CharacterController>();
         audioSource = GetComponent<AudioSource>();
 
+        // 🔹 IMPORTANTE: asegurarse de que el tiempo esté activo
+        Time.timeScale = 1f;
+
         vidasActuales = vidasIniciales;
 
-        // Si no hay punto de respawn, crear uno en la posición inicial
         if (respawnPoint == null)
         {
             GameObject spawn = new GameObject("SpawnPoint");
@@ -94,13 +96,14 @@ public class PlayerRespawn : MonoBehaviour
     {
         Debug.Log("¡Game Over!");
 
-        // 🔊 Reproducir sonido de muerte final (si existe)
         if (sonidoMuerte != null && audioSource != null)
             audioSource.PlayOneShot(sonidoMuerte);
 
         if (panelPerdiste != null)
             panelPerdiste.SetActive(true);
 
+        // 🔹 Pausa del juego
         Time.timeScale = 0f;
     }
+
 }

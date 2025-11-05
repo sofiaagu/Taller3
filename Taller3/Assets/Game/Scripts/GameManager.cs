@@ -125,4 +125,24 @@ public class GameManager : MonoBehaviour
         if (tValue != null)
             tValue.text = "0";
     }
+    // 🔹 NUEVO MÉTODO: Volver al menú y resetear
+    public void VolverAlMenuYResetear()
+    {
+        // Primero resetear todos los datos
+        ResetDatos();
+
+        // Desbloquear el cursor
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        // Cargar la escena del menú
+        SceneManager.LoadScene(escenaMenu);
+
+        Debug.Log("🏠 Volviendo al menú principal...");
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.activeSceneChanged -= CambiarMusicaSegunEscena;
+    }
 }
