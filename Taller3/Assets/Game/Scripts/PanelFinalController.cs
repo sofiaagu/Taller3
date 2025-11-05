@@ -45,16 +45,16 @@ public class PanelFinalController : MonoBehaviour
 
         // Mostrar puntaje total
         if (textoPuntaje != null)
-            textoPuntaje.text = "Score total: " + GameManager.instance.Score.ToString();
+            textoPuntaje.text = "Score total: " + GameManager.Instance.score.ToString();
 
         // Mostrar ítems recolectados
         if (textoItems != null)
-            textoItems.text = "Items recolectadas: " + GameManager.instance.ItemsCount.ToString();
+            textoItems.text = "Items recolectadas: " + GameManager.Instance.ItemsCount.ToString();
 
         // Mostrar tiempo total formateado
         if (textoTiempo != null)
         {
-            float tiempo = GameManager.instance.GlobalTime;
+            float tiempo = GameManager.Instance.GlobalTime;
             int minutos = (int)(tiempo / 60);
             int segundos = (int)(tiempo % 60);
             int milisegundos = (int)((tiempo - (int)tiempo) * 100);
@@ -67,20 +67,20 @@ public class PanelFinalController : MonoBehaviour
     // 🔹 Botón: volver al menú
     public void VolverAlMenu()
     {
-        if (GameManager.instance != null)
+        if (GameManager.Instance != null)
         {
-            GameManager.instance.ResetGame();
-            GameManager.instance.LoadScene("MenuPrincipal"); // Cambia al nombre exacto de tu escena de menú
+            GameManager.Instance.ResetGame();
+            GameManager.Instance.LoadScene("MenuPrincipal"); // Cambia al nombre exacto de tu escena de menú
         }
     }
 
     // 🔹 Botón: salir del juego
     public void SalirDelJuego()
     {
-        if (GameManager.instance != null)
+        if (GameManager.Instance != null)
         {
             Debug.Log("Saliendo del juego...");
-            GameManager.instance.ExitGame();
+            GameManager.Instance.ExitGame();
         }
     }
 }
