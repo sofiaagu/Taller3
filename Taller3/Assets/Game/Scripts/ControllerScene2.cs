@@ -48,11 +48,11 @@ public class ControllerScene2 : MonoBehaviour
     // 🔹 Llamado por cada recolección
     public void RegistrarItemRecolectado(int puntos)
     {
-        // Aumentar score e ítems en el GameManager
-        if (GameManager.instance != null)
+        // Aumentar score e ítems en el GameManager (si existe)
+        if (GameManager.Instance != null)
         {
-            GameManager.instance.AddScore(puntos);
-            GameManager.instance.AddItem();
+            GameManager.Instance.AgregarPuntos(puntos);
+            GameManager.Instance.RegistrarColision(); // usamos colisiones como “ítems recolectados”
         }
 
         // Actualizar el contador local
@@ -60,7 +60,7 @@ public class ControllerScene2 : MonoBehaviour
 
         // Actualizar textos
         if (textoScore != null)
-            textoScore.text = GameManager.instance.Score.ToString();
+            textoScore.text = GameManager.Instance.score.ToString();
 
         if (textoItems != null)
             textoItems.text = $"{itemsRecolectados} / {recoleccionesNecesarias}";
@@ -79,10 +79,6 @@ public class ControllerScene2 : MonoBehaviour
         if (tiempoEscena != null)
             tiempoEscena.TimerStop();
 
-        // Guardar tiempo total en GameManager
-        if (GameManager.instance != null)
-            GameManager.instance.AddTime(tiempoEscena.StopTime);
-
         // Buscar y mostrar el panel final si existe
         PanelFinalController panel = FindFirstObjectByType<PanelFinalController>();
         if (panel != null)
@@ -92,14 +88,18 @@ public class ControllerScene2 : MonoBehaviour
     // 🔹 Botón de volver al menú
     public void VolverAlMenu()
     {
-        if (GameManager.instance != null)
-            SceneManager.LoadScene("MenuPrincipal");
+        Debug.Log("Volviendo al menú...");
+        SceneManager.LoadScene("MenuPrincipal"); // Cambia el nombre según tu escena real
     }
 
     // 🔹 Botón de salir del juego
     public void SalirDelJuego()
     {
         Debug.Log("👋 Saliendo del juego...");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
     }
 }

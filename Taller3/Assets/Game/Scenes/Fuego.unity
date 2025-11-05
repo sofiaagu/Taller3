@@ -757,6 +757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portalVisual: {fileID: 1741817585}
   gameManager: {fileID: 968192920}
+  nombreEscenaDestino: Hielo
 --- !u!4 &114341897
 Transform:
   m_ObjectHideFlags: 0
@@ -29757,9 +29758,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5589b0972e9ea0641887e3abca5154b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tValue: {fileID: 1486351584}
+  panelPrincipal: {fileID: 0}
+  panelNiveles: {fileID: 0}
+  escenaNivel1: Nivel1_Fuego
+  escenaNivel2: Nivel2_Hielo
+  escenaMenu: Menu
   score: 0
   colisionesTotales: 0
+  tValue: {fileID: 1486351584}
 --- !u!1001 &985737552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29870,6 +29876,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6476709128260597864, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662470851533080972, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

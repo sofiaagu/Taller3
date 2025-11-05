@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PanelFinalController : MonoBehaviour
 {
     [Header("Referencias UI")]
-    public GameObject panelFinal;           // Panel contenedor
-    public TextMeshProUGUI textoTitulo;     // "¡Has completado la misión!"
-    public TextMeshProUGUI textoPuntaje;    // Puntaje total
-    public TextMeshProUGUI textoItems;      // Ítems recolectados
-    public TextMeshProUGUI textoTiempo;     // Tiempo total
+    public GameObject panelFinal;
+    public TextMeshProUGUI textoTitulo;
+    public TextMeshProUGUI textoPuntaje;
+    public TextMeshProUGUI textoItems;
+    public TextMeshProUGUI textoTiempo;
 
     [Header("Botones")]
-    public Button botonMenu;                // Volver al menú
-    public Button botonSalir;               // Salir del juego
+    public Button botonMenu;
+    public Button botonSalir;
 
     private bool mostrado = false;
 
@@ -23,7 +24,7 @@ public class PanelFinalController : MonoBehaviour
         if (panelFinal != null)
             panelFinal.SetActive(false);
 
-        // Asignar eventos a los botones (por seguridad)
+        // Asignar eventos a los botones
         if (botonMenu != null)
             botonMenu.onClick.AddListener(VolverAlMenu);
 
@@ -39,22 +40,29 @@ public class PanelFinalController : MonoBehaviour
 
         panelFinal.SetActive(true);
 
-        // Mensaje de título
+        // Título
         if (textoTitulo != null)
             textoTitulo.text = "¡GANASTE!";
 
-        // Mostrar puntaje total
+        // Puntaje total
         if (textoPuntaje != null)
             textoPuntaje.text = "Score total: " + GameManager.Instance.score.ToString();
 
-        // Mostrar ítems recolectados
+        // Ítems recolectados (si tu GameManager no tiene ItemsCount, puedes quitar esto)
         if (textoItems != null)
-            textoItems.text = "Items recolectadas: " + GameManager.Instance.ItemsCount.ToString();
+        {
+            // Si no existe ItemsCount, mostramos las colisiones como alternativa
+            string items = GameManager.Instance.colisionesTotales.ToString();
+            textoItems.text = "Items recolectados: " + items;
+        }
 
-        // Mostrar tiempo total formateado
+        // Tiempo total (si no manejas tiempo, muestra 00:00)
         if (textoTiempo != null)
         {
-            float tiempo = GameManager.Instance.GlobalTime;
+            float tiempo = 0;
+            if (GameManager.Instance != null && GameManager.Instance is not null)
+                tiempo = GameManager.Instance.score; // o cualquier variable que manejes como tiempo
+
             int minutos = (int)(tiempo / 60);
             int segundos = (int)(tiempo % 60);
             int milisegundos = (int)((tiempo - (int)tiempo) * 100);
@@ -67,20 +75,18 @@ public class PanelFinalController : MonoBehaviour
     // 🔹 Botón: volver al menú
     public void VolverAlMenu()
     {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.ResetGame();
-            GameManager.Instance.LoadScene("MenuPrincipal"); // Cambia al nombre exacto de tu escena de menú
-        }
+        Debug.Log("Volviendo al menú...");
+        SceneManager.LoadScene("MenuPrincipal"); // 🔸 Cambia este nombre si tu menú se llama distinto
     }
 
     // 🔹 Botón: salir del juego
     public void SalirDelJuego()
     {
-        if (GameManager.Instance != null)
-        {
-            Debug.Log("Saliendo del juego...");
-            GameManager.Instance.ExitGame();
-        }
+        Debug.Log("Saliendo del juego...");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
