@@ -22,6 +22,7 @@ public class SceneController1 : MonoBehaviour
     {
         sceneLoader = FindAnyObjectByType<LoaderScene>();
 
+        
         if (portalVisual == null)
             portalVisual = gameObject;
 
@@ -30,6 +31,8 @@ public class SceneController1 : MonoBehaviour
 
         if (GameManager.Instance == null)
             Debug.LogWarning(" No hay un GameManager activo (asegúrate de venir desde el menú).");
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -61,7 +64,8 @@ public class SceneController1 : MonoBehaviour
             textoColisiones.text = $"{gm.colisionesTotales}";
 
         if (textoItems != null)
-            textoItems.text = $"{gm.itemsRecogidos}";
+            textoItems.text = $"{gm.itemsFuego}";
+
 
         // 🔹 Lógica del portal (sin cambios)
         bool mostrar = gm.colisionesTotales < 3 || gm.score > 80;

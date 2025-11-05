@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ControllerScene2 : MonoBehaviour
 {
@@ -17,18 +16,24 @@ public class ControllerScene2 : MonoBehaviour
     [Header("🕒 Temporizador principal")]
     public Timer tiempoEscena;
 
+    [Header("🏁 Panel final")]
+    public PanelFinalController panelFinalController;
+
     [Header("🏁 Condición de victoria")]
     public int recoleccionesNecesarias = 9;
 
-    private int itemsRecolectados = 0;
-
     private void Start()
     {
-        if (textoScore != null)
-            textoScore.text = "0";
+        Debug.Log("[ControllerScene2] Iniciado. GameManager.Instance = " + (GameManager.Instance != null));
 
-        if (textoItems != null)
-            textoItems.text = $"0 / {recoleccionesNecesarias}";
+        if (GameManager.Instance != null)
+        {
+            if (textoScore != null)
+                textoScore.text = GameManager.Instance.score.ToString();
+
+            if (textoItems != null)
+                textoItems.text = $"{GameManager.Instance.itemsHielo} / {recoleccionesNecesarias}";
+        }
 
         if (tiempoEscena != null)
             tiempoEscena.TimerStart();
@@ -36,7 +41,6 @@ public class ControllerScene2 : MonoBehaviour
 
     private void Update()
     {
-        // 🔹 Actualiza el tiempo visual si hay Timer activo
         if (tiempoEscena != null)
         {
             minTMP.text = tiempoEscena.timerMinutes.text;
@@ -45,28 +49,20 @@ public class ControllerScene2 : MonoBehaviour
         }
     }
 
-    // 🔹 Llamado por cada recolección
     public void RegistrarItemRecolectado(int puntos)
     {
-        // Aumentar score e ítems en el GameManager (si existe)
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.AgregarPuntos(puntos);
-            GameManager.Instance.RegistrarColision(); // usamos colisiones como “ítems recolectados”
-        }
+        if (GameManager.Instance == null) return;
 
-        // Actualizar el contador local
-        itemsRecolectados++;
+        GameManager.Instance.AgregarPuntos(puntos);
+        GameManager.Instance.RegistrarItemHielo();
 
-        // Actualizar textos
         if (textoScore != null)
             textoScore.text = GameManager.Instance.score.ToString();
 
         if (textoItems != null)
-            textoItems.text = $"{itemsRecolectados} / {recoleccionesNecesarias}";
+            textoItems.text = $"{GameManager.Instance.itemsHielo} / {recoleccionesNecesarias}";
 
-        // Revisar si se cumplió la condición de victoria
-        if (itemsRecolectados >= recoleccionesNecesarias)
+        if (GameManager.Instance.itemsHielo >= recoleccionesNecesarias)
         {
             FinalizarEscena();
         }
@@ -74,32 +70,21 @@ public class ControllerScene2 : MonoBehaviour
 
     private void FinalizarEscena()
     {
-        Debug.Log("🏁 Todos los ítems recolectados — Escena completada.");
+        Debug.Log("🏁 FinalizarEscena() ejecutado - Mostrando panel final.");
 
         if (tiempoEscena != null)
             tiempoEscena.TimerStop();
 
-        // Buscar y mostrar el panel final si existe
-        PanelFinalController panel = FindFirstObjectByType<PanelFinalController>();
-        if (panel != null)
-            panel.MostrarPanelFinal();
-    }
+        if (panelFinalController != null)
+        {
+            panelFinalController.MostrarPanelFinal();
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ panelFinalController no asignado en el Inspector.");
+        }
 
-    // 🔹 Botón de volver al menú
-    public void VolverAlMenu()
-    {
-        Debug.Log("Volviendo al menú...");
-        SceneManager.LoadScene("MenuPrincipal"); // Cambia el nombre según tu escena real
-    }
-
-    // 🔹 Botón de salir del juego
-    public void SalirDelJuego()
-    {
-        Debug.Log("👋 Saliendo del juego...");
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

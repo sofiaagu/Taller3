@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject panelNiveles;
 
     [Header("Datos de juego extendidos")]
-    public int itemsRecogidos = 0;
+    public int itemsFuego = 0;
+    public int itemsHielo = 0;
 
     [Header("Nombres de escenas")]
     public string escenaNivel1 = "Fuego";
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
     public int colisionesTotales = 0;
 
     [Header("UI Opcional")]
-    public TextMeshProUGUI tValue; // Texto para mostrar el puntaje en pantalla
+    public TextMeshProUGUI tValue;
 
     [Header("Audio General")]
     public AudioSource musicaSource;
@@ -36,11 +37,10 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // Singleton
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // persiste entre escenas
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -50,10 +50,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
         musicaSource.volume = 1f;
         AudioListener.volume = 1f;
-        // Si hay paneles (significa que estamos en el menú principal)
+
         if (panelPrincipal != null && panelNiveles != null)
         {
             panelPrincipal.SetActive(true);
@@ -63,16 +62,13 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        // Suscribirse al evento de cambio de escena
         SceneManager.activeSceneChanged += CambiarMusicaSegunEscena;
-
-        // Reproducir música del menú al iniciar
         CambiarMusicaSegunEscena(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
     }
 
-    private void CambiarMusicaSegunEscena(Scene escenaAnterior, Scene nuevaEscena)
+    private void CambiarMusicaSegunEscena(Scene anterior, Scene nueva)
     {
-        escenaActual = nuevaEscena.name;
+        escenaActual = nueva.name;
 
         if (musicaSource == null) return;
 
@@ -91,100 +87,42 @@ public class GameManager : MonoBehaviour
             musicaSource.clip = clipSeleccionado;
             musicaSource.loop = true;
             musicaSource.Play();
-            Debug.Log("🎵 Reproduciendo música de: " + escenaActual);
+            Debug.Log("🎵 Música: " + escenaActual);
         }
     }
 
-    // 🔹 GESTIÓN DE PUNTAJE Y COLISIONES
+    // 🔹 PUNTOS E ÍTEMS
     public void AgregarPuntos(int cantidad)
     {
         score += cantidad;
-        Debug.Log("Puntaje actual: " + score);
-
         if (tValue != null)
             tValue.text = score.ToString();
     }
 
-    public void RegistrarItem()
+    public void RegistrarItemFuego()
     {
-        itemsRecogidos++;
-        Debug.Log("Items recogidos: " + itemsRecogidos);
+        itemsFuego++;
+        Debug.Log($"🔥 Ítems de fuego: {itemsFuego}");
+    }
+
+    public void RegistrarItemHielo()
+    {
+        itemsHielo++;
+        Debug.Log($"❄️ Ítems de hielo: {itemsHielo}");
     }
 
     public void RegistrarColision()
     {
         colisionesTotales++;
-        Debug.Log("Colisiones totales: " + colisionesTotales);
-    }
-
-    // 🔹 MENÚ PRINCIPAL
-    public void MostrarPanelNiveles()
-    {
-        if (panelPrincipal == null || panelNiveles == null) return;
-
-        panelPrincipal.SetActive(false);
-        panelNiveles.SetActive(true);
-        Debug.Log("Mostrando panel de niveles");
-    }
-
-    public void VolverAlMenu()
-    {
-        if (panelPrincipal == null || panelNiveles == null)
-        {
-            SceneManager.LoadScene(escenaMenu);
-        }
-        else
-        {
-            panelPrincipal.SetActive(true);
-            panelNiveles.SetActive(false);
-            Debug.Log("Volviendo al menú principal");
-        }
-    }
-
-    // 🔹 CARGA DE NIVELES
-    public void IniciarJuego()
-    {
-        Debug.Log("Iniciando..");
-        SceneManager.LoadScene(escenaNivel1);
-    }
-
-    public void CargarNivel1()
-    {
-        Debug.Log("Cargando Nivel 1...");
-        SceneManager.LoadScene(escenaNivel1);
-    }
-
-    public void CargarNivel2()
-    {
-        Debug.Log("Cargando Nivel 2...");
-        SceneManager.LoadScene(escenaNivel2);
-    }
-
-    // 🔹 CONTROL GENERAL DE ESCENAS
-    public void ReiniciarJuego()
-    {
-        Debug.Log("Reiniciando juego...");
-        SceneManager.LoadScene(escenaMenu);
-        ResetDatos();
     }
 
     public void ResetDatos()
     {
         score = 0;
         colisionesTotales = 0;
-
+        itemsFuego = 0;
+        itemsHielo = 0;
         if (tValue != null)
             tValue.text = "0";
-    }
-
-    // 🔹 SALIR DEL JUEGO
-    public void SalirDelJuego()
-    {
-        Debug.Log("Saliendo del juego...");
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
     }
 }

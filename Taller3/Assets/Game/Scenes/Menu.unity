@@ -1180,10 +1180,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 798928017}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: IniciarJuego
-        m_Mode: 1
+      - m_Target: {fileID: 28225615}
+        m_TargetAssemblyTypeName: LoaderScene, Assembly-CSharp
+        m_MethodName: LoaderScenes
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1681,7 +1681,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelPrincipal: {fileID: 997324089}
   panelNiveles: {fileID: 1805844487}
-  itemsRecogidos: 0
+  itemsFuego: 0
+  itemsHielo: 0
   escenaNivel1: Fuego
   escenaNivel2: Hielo
   escenaMenu: Menu
@@ -4152,6 +4153,10 @@ PrefabInstance:
     - target: {fileID: 4393786934685237853, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803116728837838364, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

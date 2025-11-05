@@ -2,60 +2,66 @@
 
 public class CollectItem : MonoBehaviour
 {
-    public enum TipoEnergia { Pequeña, Grande, Fuego }
+    public enum TipoEnergia { Fuego, Hielo }
 
     [Header("Configuración del ítem")]
-    public TipoEnergia tipo = TipoEnergia.Pequeña;
-
-    [Header("Valores por tipo")]
-    public int valorPequeña = 2;
-    public int valorGrande = 5;
-    public int valorFuego = 12;
+    public TipoEnergia tipoEnergia;       // Tipo de esfera (🔥 o ❄️)
+    public int valorPuntos = 5;           // Cuántos puntos da al jugador
 
     [Header("Efectos opcionales")]
-    public AudioClip sonidoRecolectar;
-    public GameObject efectoRecolectar;
+    public AudioClip sonidoRecoleccion;
+    public GameObject efectoVisual;
+
+    private bool recolectado = false;
 
     private void OnTriggerEnter(Collider other)
     {
+        if (recolectado) return;
         if (!other.CompareTag("Player")) return;
 
-        int valor = 0;
+        recolectado = true;
 
-        // 🔹 Determinar el valor del ítem según su tipo
-        switch (tipo)
-        {
-            case TipoEnergia.Pequeña:
-                valor = valorPequeña;
-                break;
-            case TipoEnergia.Grande:
-                valor = valorGrande;
-                break;
-            case TipoEnergia.Fuego:
-                valor = valorFuego;
-                break;
-        }
+        // 🔹 Reproduce sonido
+        if (sonidoRecoleccion != null)
+            AudioSource.PlayClipAtPoint(sonidoRecoleccion, transform.position);
 
-        // Sumar al puntaje e incrementar contador global de ítems
+        // 🔹 Efecto visual
+        if (efectoVisual != null)
+            Instantiate(efectoVisual, transform.position, Quaternion.identity);
+
+        // 🔹 Registrar en GameManager
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.AgregarPuntos(valor);
-            GameManager.Instance.RegistrarItem(); // aquí se cuenta la esfera
+            GameManager.Instance.AgregarPuntos(valorPuntos);
+
+            if (tipoEnergia == TipoEnergia.Fuego)
+                GameManager.Instance.RegistrarItemFuego();
+            else if (tipoEnergia == TipoEnergia.Hielo)
+                GameManager.Instance.RegistrarItemHielo();
         }
-        else
-        {
-            Debug.LogWarning("⚠️ No se encontró el GameManager en la escena.");
-        }
 
-        // 🔹 Reproducir sonido
-        if (sonidoRecolectar != null)
-            AudioSource.PlayClipAtPoint(sonidoRecolectar, transform.position);
+        // 🔹 Actualizar el controlador de la escena (si existe)
+        ActualizarUI();
 
-        // 🔹 Crear efecto visual
-        if (efectoRecolectar != null)
-            Instantiate(efectoRecolectar, transform.position, Quaternion.identity);
-
-        // 🔹 Eliminar el ítem
+        // 🔹 Destruir el objeto recolectado
         Destroy(gameObject);
+    }
+
+    private void ActualizarUI()
+    {
+        // Busca controladores de escena y actualiza la UI según el tipo
+        var controllerFuego = FindFirstObjectByType<SceneController1>();
+        var controllerHielo = FindFirstObjectByType<ControllerScene2>();
+
+        if (tipoEnergia == TipoEnergia.Fuego && controllerFuego != null)
+        {
+            controllerFuego.textoItems.text = $"{GameManager.Instance.itemsFuego}";
+            controllerFuego.textoScore.text = GameManager.Instance.score.ToString();
+        }
+        else if (tipoEnergia == TipoEnergia.Hielo && controllerHielo != null)
+        {
+            controllerHielo.textoItems.text = $"{GameManager.Instance.itemsHielo} / {controllerHielo.recoleccionesNecesarias}";
+            controllerHielo.textoScore.text = GameManager.Instance.score.ToString();
+        }
     }
 }

@@ -7488,12 +7488,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 1
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 1
+  valorPuntos: 3
+  sonidoRecoleccion: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!1001 &589215487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7908,12 +7906,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 0
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 1
+  valorPuntos: 3
+  sonidoRecoleccion: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!1 &747646535 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3394502148483450971, guid: 6d35f3befa11c3f49ac6b0964dd94444, type: 3}
@@ -8522,12 +8518,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 0
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 1
+  valorPuntos: 3
+  sonidoRecoleccion: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!1 &850684430
 GameObject:
   m_ObjectHideFlags: 0
@@ -9030,12 +9024,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 0
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 1
+  valorPuntos: 3
+  sonidoRecoleccion: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!4 &924102304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4316893251028337148, guid: ff8916c7ca4f05642a4cb2d964203fdc, type: 3}
@@ -9277,6 +9269,7 @@ MonoBehaviour:
   segTMP: {fileID: 2074052564}
   milSegTMP: {fileID: 2074052561}
   tiempoEscena: {fileID: 1388323}
+  panelFinalController: {fileID: 1932184563}
   recoleccionesNecesarias: 9
 --- !u!1 &1064158310
 GameObject:
@@ -25428,12 +25421,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 1
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 1
+  valorPuntos: 3
+  sonidoRecoleccion: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!1001 &1590881204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35759,12 +35750,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 0
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 1
+  valorPuntos: 3
+  sonidoRecoleccion: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!4 &1756121101 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1157782261704780405, guid: 165b44c90adbed542acd1f9164c5012f, type: 3}
@@ -51316,12 +51305,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 0
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 1
+  valorPuntos: 3
+  sonidoRecoleccion: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!114 &1932184556 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7908564081115685946, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
@@ -51393,6 +51380,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6662470851533080972, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
   m_PrefabInstance: {fileID: 2074052560}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1932184563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932184562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b9a70f0cf8893418afdb3db37f06a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelFinal: {fileID: 1932184562}
+  textoTitulo: {fileID: 0}
+  textoPuntaje: {fileID: 0}
+  textoItems: {fileID: 0}
+  textoTiempo: {fileID: 0}
+  botonMenu: {fileID: 0}
+  botonSalir: {fileID: 0}
 --- !u!1 &1938288342
 GameObject:
   m_ObjectHideFlags: 0
@@ -56479,12 +56485,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 0
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 1
+  valorPuntos: 3
+  sonidoRecoleccion: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!1 &1991730907
 GameObject:
   m_ObjectHideFlags: 0
@@ -56607,12 +56611,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 0
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 1
+  valorPuntos: 3
+  sonidoRecoleccion: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!4 &2007754157 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1838383629823476457, guid: 4806b64503d3b1a4fa1643b0baaa05be, type: 3}
@@ -57000,10 +57002,25 @@ PrefabInstance:
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 1756121105}
+    - target: {fileID: 5741172916827136976, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662470851533080972, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8857148139855956418, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6662470851533080972, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1932184563}
   m_SourcePrefab: {fileID: 100100000, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
 --- !u!114 &2074052561 stripped
 MonoBehaviour:

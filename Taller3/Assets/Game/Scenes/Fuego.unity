@@ -7120,12 +7120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 2
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 0
+  valorPuntos: 12
+  sonidoRecoleccion: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!135 &353697278
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8065,12 +8063,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 2
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 0
+  valorPuntos: 12
+  sonidoRecoleccion: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!135 &518383942
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8279,12 +8275,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 2
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 0
+  valorPuntos: 12
+  sonidoRecoleccion: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!135 &519759406
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13369,12 +13363,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 2
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 0
+  valorPuntos: 12
+  sonidoRecoleccion: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!135 &659890373
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13749,37 +13741,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116228972}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &706591800
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 706591801}
-  m_Layer: 0
-  m_Name: MenuManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &706591801
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706591800}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2119.3616, y: 811.3574, z: 321.16174}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &707652168
 GameObject:
@@ -23958,12 +23919,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 2
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 0
+  valorPuntos: 12
+  sonidoRecoleccion: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!135 &825582277
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -29829,6 +29788,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6662470851533080972, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163165701537992904, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -41526,12 +41489,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 2
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 0
+  valorPuntos: 12
+  sonidoRecoleccion: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!135 &1307613916
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -41654,12 +41615,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 2
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 0
+  valorPuntos: 12
+  sonidoRecoleccion: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!135 &1322165870
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -63988,12 +63947,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 2
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 0
+  valorPuntos: 12
+  sonidoRecoleccion: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!135 &1915789686
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -74107,12 +74064,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 2
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 0
+  valorPuntos: 12
+  sonidoRecoleccion: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!135 &2025331799
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -74407,12 +74362,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b6b7d2ced2f7e48883a95e44b9eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipo: 2
-  "valorPeque\xF1a": 2
-  valorGrande: 5
-  valorFuego: 12
-  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
-  efectoRecolectar: {fileID: 0}
+  tipoEnergia: 0
+  valorPuntos: 12
+  sonidoRecoleccion: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
+  efectoVisual: {fileID: 0}
 --- !u!135 &2067962700
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -74951,4 +74904,3 @@ SceneRoots:
   - {fileID: 655194899}
   - {fileID: 1741817589}
   - {fileID: 1055207849}
-  - {fileID: 706591801}
