@@ -4,7 +4,7 @@ using TMPro;
 
 public class ControllerScene2 : MonoBehaviour
 {
-    [Header("📊 Referencias UI")]
+    [Header("📊 Referencias UI - HUD del juego")]
     public TextMeshProUGUI textoScore;
     public TextMeshProUGUI textoItems;
 
@@ -16,8 +16,14 @@ public class ControllerScene2 : MonoBehaviour
     [Header("🕒 Temporizador principal")]
     public Timer tiempoEscena;
 
-    [Header("🏁 Panel final")]
-    public PanelFinalController panelFinalController;
+    [Header("🏁 Panel Final - GameObject y sus textos")]
+    public GameObject panelFinal;
+    public TextMeshProUGUI textoPuntajeFinal;
+    public TextMeshProUGUI textoItemsFuegoFinal;
+    public TextMeshProUGUI textoItemsHieloFinal;
+    public TextMeshProUGUI textoColisionesFinal;
+    public TextMeshProUGUI textoTiempoTotalFinal;
+    public TextMeshProUGUI textoTiempoEscenaFinal;
 
     [Header("🏁 Condición de victoria")]
     public int recoleccionesNecesarias = 9;
@@ -26,11 +32,14 @@ public class ControllerScene2 : MonoBehaviour
     {
         Debug.Log("[ControllerScene2] Iniciado. GameManager.Instance = " + (GameManager.Instance != null));
 
+        // Ocultar panel final al inicio
+        if (panelFinal != null)
+            panelFinal.SetActive(false);
+
         if (GameManager.Instance != null)
         {
             if (textoScore != null)
                 textoScore.text = GameManager.Instance.score.ToString();
-
             if (textoItems != null)
                 textoItems.text = $"{GameManager.Instance.itemsHielo} / {recoleccionesNecesarias}";
         }
@@ -58,7 +67,6 @@ public class ControllerScene2 : MonoBehaviour
 
         if (textoScore != null)
             textoScore.text = GameManager.Instance.score.ToString();
-
         if (textoItems != null)
             textoItems.text = $"{GameManager.Instance.itemsHielo} / {recoleccionesNecesarias}";
 
@@ -72,19 +80,49 @@ public class ControllerScene2 : MonoBehaviour
     {
         Debug.Log("🏁 FinalizarEscena() ejecutado - Mostrando panel final.");
 
+        // Obtener el tiempo transcurrido ANTES de detener el timer
+        float tiempoTranscurrido = 0f;
         if (tiempoEscena != null)
-            tiempoEscena.TimerStop();
-
-        if (panelFinalController != null)
         {
-            panelFinalController.MostrarPanelFinal();
+            tiempoTranscurrido = tiempoEscena.timerTime; // ✅ Acceso directo
+            tiempoEscena.TimerStop();
+        }
+
+        // Llamar al GameManager para mostrar el panel final
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.MostrarPanelFinal(
+                panelFinal,
+                textoPuntajeFinal,
+                textoItemsFuegoFinal,
+                textoItemsHieloFinal,
+                textoColisionesFinal,
+                textoTiempoTotalFinal,
+                textoTiempoEscenaFinal,
+                tiempoTranscurrido
+            );
         }
         else
         {
-            Debug.LogWarning("⚠️ panelFinalController no asignado en el Inspector.");
+            Debug.LogWarning("⚠️ GameManager.Instance no está disponible.");
         }
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    public void FinalizarEscenaDesdeItem()
+    {
+        FinalizarEscena();
+    }
+
+    // 🔹 Botones del Panel Final (se llaman desde los botones en el Inspector)
+   
+  
+
+    public void BotonVolverAlMenu()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.VolverAlMenuYResetear();
     }
 }

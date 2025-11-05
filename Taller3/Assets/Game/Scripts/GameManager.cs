@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public int colisionesTotales = 0;
 
+    [Header("Tiempo total del juego")]
+    public float tiempoTotal = 0f;
+
     [Header("UI Opcional")]
     public TextMeshProUGUI tValue;
 
@@ -116,6 +119,12 @@ public class GameManager : MonoBehaviour
         colisionesTotales++;
     }
 
+    public void RegistrarTiempo(float tiempoEscena)
+    {
+        tiempoTotal += tiempoEscena;
+        Debug.Log($"⏱️ Tiempo total acumulado: {tiempoTotal:F2} segundos");
+    }
+
     public void ResetDatos()
     {
         score = 0;
@@ -125,24 +134,119 @@ public class GameManager : MonoBehaviour
         if (tValue != null)
             tValue.text = "0";
     }
-    // 🔹 NUEVO MÉTODO: Volver al menú y resetear
+
+    // 🔹 Volver al menú principal
     public void VolverAlMenuYResetear()
     {
-        // Primero resetear todos los datos
         ResetDatos();
-
-        // Desbloquear el cursor
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-
-        // Cargar la escena del menú
         SceneManager.LoadScene(escenaMenu);
-
         Debug.Log("🏠 Volviendo al menú principal...");
     }
+
+    // 🔹 NUEVO: Abrir panel de niveles
+    public void AbrirPanelNiveles()
+    {
+        if (panelPrincipal != null && panelNiveles != null)
+        {
+            panelPrincipal.SetActive(false);
+            panelNiveles.SetActive(true);
+            Debug.Log("📜 Panel de niveles abierto.");
+        }
+    }
+
+    // 🔹 Volver al panel principal desde el panel de niveles
+    public void VolverAlMenuDesdeNiveles()
+    {
+        if (panelPrincipal != null && panelNiveles != null)
+        {
+            panelPrincipal.SetActive(true);
+            panelNiveles.SetActive(false);
+            Debug.Log("⬅️ Volviendo al panel principal del menú.");
+        }
+    }
+
+    // 🔹 NUEVO: Cargar Nivel 1 (Fuego)
+    public void CargarNivel1()
+    {
+        ResetDatos();
+        SceneManager.LoadScene(escenaNivel1);
+        Debug.Log("🔥 Cargando Nivel 1...");
+    }
+
+    // 🔹 NUEVO: Cargar Nivel 2 (Hielo)
+    public void CargarNivel2()
+    {
+        ResetDatos();
+        SceneManager.LoadScene(escenaNivel2);
+        Debug.Log("❄️ Cargando Nivel 2...");
+    }
+    // 🔹 NUEVO: Salir del juego
+    public void SalirDelJuego()
+    {
+        Debug.Log("🚪 Saliendo del juego...");
+        Application.Quit();
+    }
+    // 🔹 NUEVO: Mostrar panel final con estadísticas
+    public void MostrarPanelFinal(GameObject panelFinal,
+                                   TextMeshProUGUI textoPuntaje,
+                                   TextMeshProUGUI textoItemsFuego,
+                                   TextMeshProUGUI textoItemsHielo,
+                                   TextMeshProUGUI textoColisiones,
+                                   TextMeshProUGUI textoTiempoTotal,
+                                   TextMeshProUGUI textoTiempoEscena,
+                                   float tiempoEscenaActual)
+    {
+        if (panelFinal == null)
+        {
+            Debug.LogError("⚠️ Panel Final no está asignado.");
+            return;
+        }
+
+        // Registrar el tiempo de esta escena
+        RegistrarTiempo(tiempoEscenaActual);
+
+        // Actualizar textos con las estadísticas
+        if (textoPuntaje != null)
+            textoPuntaje.text = $"Puntaje Total: {score}";
+
+        if (textoItemsFuego != null)
+            textoItemsFuego.text = $"Items de Fuego: {itemsFuego}";
+
+        if (textoItemsHielo != null)
+            textoItemsHielo.text = $"Items de Hielo: {itemsHielo}";
+
+        if (textoColisiones != null)
+            textoColisiones.text = $"Colisiones Totales: {colisionesTotales}";
+
+        if (textoTiempoTotal != null)
+        {
+            int minutos = Mathf.FloorToInt(tiempoTotal / 60f);
+            int segundos = Mathf.FloorToInt(tiempoTotal % 60f);
+            textoTiempoTotal.text = $"Tiempo Total: {minutos:00}:{segundos:00}";
+        }
+
+        if (textoTiempoEscena != null)
+        {
+            int minutos = Mathf.FloorToInt(tiempoEscenaActual / 60f);
+            int segundos = Mathf.FloorToInt(tiempoEscenaActual % 60f);
+            textoTiempoEscena.text = $"Tiempo Escena: {minutos:00}:{segundos:00}";
+        }
+
+        // Mostrar el panel
+        panelFinal.SetActive(true);
+
+        // Pausar el juego
+        Time.timeScale = 0f;
+
+        Debug.Log("🏁 Panel Final mostrado con todas las estadísticas.");
+    }
+
 
     private void OnDestroy()
     {
         SceneManager.activeSceneChanged -= CambiarMusicaSegunEscena;
     }
 }
+

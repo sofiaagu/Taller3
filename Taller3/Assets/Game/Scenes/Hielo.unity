@@ -166,6 +166,7 @@ MonoBehaviour:
   timerMinutes: {fileID: 2074052565}
   timerSeconds: {fileID: 2074052564}
   timerSeconds100: {fileID: 2074052561}
+  timerTime: 0
 --- !u!1001 &9238565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9309,6 +9310,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1826532366}
   m_SourcePrefab: {fileID: 100100000, guid: 6d35f3befa11c3f49ac6b0964dd94444, type: 3}
+--- !u!114 &1039886915 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7611043788470318176, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
+  m_PrefabInstance: {fileID: 2074052560}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1043173291
 GameObject:
   m_ObjectHideFlags: 0
@@ -9359,7 +9371,13 @@ MonoBehaviour:
   segTMP: {fileID: 2074052564}
   milSegTMP: {fileID: 2074052561}
   tiempoEscena: {fileID: 1388323}
-  panelFinalController: {fileID: 1932184563}
+  panelFinal: {fileID: 1932184562}
+  textoPuntajeFinal: {fileID: 1932184560}
+  textoItemsFuegoFinal: {fileID: 1039886915}
+  textoItemsHieloFinal: {fileID: 1932184559}
+  textoColisionesFinal: {fileID: 1650794174}
+  textoTiempoTotalFinal: {fileID: 1932184558}
+  textoTiempoEscenaFinal: {fileID: 0}
   recoleccionesNecesarias: 9
 --- !u!1 &1064158310
 GameObject:
@@ -24104,57 +24122,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133840349}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1147656614
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1147656616}
-  - component: {fileID: 1147656615}
-  m_Layer: 0
-  m_Name: PanelFinalController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1147656615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1147656614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06b9a70f0cf8893418afdb3db37f06a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panelFinal: {fileID: 1932184562}
-  textoTitulo: {fileID: 1932184561}
-  textoPuntaje: {fileID: 1932184560}
-  textoItems: {fileID: 1932184559}
-  textoTiempo: {fileID: 1932184558}
-  botonMenu: {fileID: 1932184557}
-  botonSalir: {fileID: 1932184556}
---- !u!4 &1147656616
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1147656614}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 856.0216, y: 630.4006, z: -0.69341147}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1148882300 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6086980563052143132, guid: 058c71a43cc03444fbb222f74297f85a, type: 3}
@@ -25845,6 +25812,17 @@ MonoBehaviour:
   direccion: {x: 1, y: 0, z: 0}
   distancia: 1
   velocidad: 2
+--- !u!114 &1650794174 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 863564261666349554, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
+  m_PrefabInstance: {fileID: 2074052560}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1660378199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51399,28 +51377,6 @@ MonoBehaviour:
   valorPuntos: 3
   sonidoRecoleccion: {fileID: 8300000, guid: acd9584d1a779d54c8d32bf8d83f9e35, type: 3}
   efectoVisual: {fileID: 0}
---- !u!114 &1932184556 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7908564081115685946, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
-  m_PrefabInstance: {fileID: 2074052560}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1932184557 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 118968463158949262, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
-  m_PrefabInstance: {fileID: 2074052560}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1932184558 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5424358766098148341, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
@@ -51454,41 +51410,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1932184561 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8263638134638355534, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
-  m_PrefabInstance: {fileID: 2074052560}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1932184562 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6662470851533080972, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
   m_PrefabInstance: {fileID: 2074052560}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1932184563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932184562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06b9a70f0cf8893418afdb3db37f06a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panelFinal: {fileID: 1932184562}
-  textoTitulo: {fileID: 0}
-  textoPuntaje: {fileID: 0}
-  textoItems: {fileID: 0}
-  textoTiempo: {fileID: 0}
-  botonMenu: {fileID: 0}
-  botonSalir: {fileID: 0}
 --- !u!1 &1938288342
 GameObject:
   m_ObjectHideFlags: 0
@@ -56976,6 +56902,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 118968463158949262, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 118968463158949262, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2251393348722794365, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
       propertyPath: m_text
       value: Colisiones
@@ -57100,6 +57034,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7517021086657170368, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
+      propertyPath: m_Name
+      value: itemsF
+      objectReference: {fileID: 0}
     - target: {fileID: 8857148139855956418, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -57107,10 +57045,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6662470851533080972, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1932184563}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2d1fdd3ceab8604794b89d89842fa40, type: 3}
 --- !u!114 &2074052561 stripped
 MonoBehaviour:
@@ -57556,5 +57491,4 @@ SceneRoots:
   - {fileID: 792754915}
   - {fileID: 1043173292}
   - {fileID: 1388322}
-  - {fileID: 1147656616}
   - {fileID: 648774572}

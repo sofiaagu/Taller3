@@ -20,7 +20,7 @@ public class Timer : MonoBehaviour
 
     private float startTime;
     private float stopTime;
-    private float timerTime;
+    public float timerTime;
     private bool isRunning = false;
 
     public float StopTime { get => stopTime; set => stopTime = value; }
@@ -49,6 +49,12 @@ public class Timer : MonoBehaviour
             isRunning = false;
             stopTime = timerTime;
             Debug.Log(stopTime.ToString());
+
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.RegistrarTiempo(stopTime);
+            }
+
             /////
             //if (stopTime >= 30)
             //{
@@ -56,8 +62,11 @@ public class Timer : MonoBehaviour
             //    respuestaAudio.Play();
             //}
 
+
+
         }
     }
+  
 
     public void TimerReset()
     {

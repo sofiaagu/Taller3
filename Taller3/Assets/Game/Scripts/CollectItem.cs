@@ -49,7 +49,6 @@ public class CollectItem : MonoBehaviour
 
     private void ActualizarUI()
     {
-        // Busca controladores de escena y actualiza la UI según el tipo
         var controllerFuego = FindFirstObjectByType<SceneController1>();
         var controllerHielo = FindFirstObjectByType<ControllerScene2>();
 
@@ -62,6 +61,12 @@ public class CollectItem : MonoBehaviour
         {
             controllerHielo.textoItems.text = $"{GameManager.Instance.itemsHielo} / {controllerHielo.recoleccionesNecesarias}";
             controllerHielo.textoScore.text = GameManager.Instance.score.ToString();
+
+            // ✅ NUEVO: Solo avisar cuando realmente se cumpla la condición
+            if (GameManager.Instance.itemsHielo >= controllerHielo.recoleccionesNecesarias)
+                controllerHielo.FinalizarEscenaDesdeItem();
         }
     }
+
 }
+

@@ -685,7 +685,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 798928017}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: VolverAlMenu
+        m_MethodName: VolverAlMenuDesdeNiveles
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1595,9 +1595,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 798928014}
         m_TargetAssemblyTypeName: OpcionesManager, Assembly-CSharp
-        m_MethodName: MostrarOpciones
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1699,6 +1699,7 @@ MonoBehaviour:
   escenaMenu: Menu
   score: 0
   colisionesTotales: 0
+  tiempoTotal: 0
   tValue: {fileID: 0}
   musicaSource: {fileID: 798928018}
   musicaMenu: {fileID: 8300000, guid: 212cd706c38c0f74f83bb80e5c0dce78, type: 3}
@@ -2877,7 +2878,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 798928017}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: MostrarPanelNiveles
+        m_MethodName: AbrirPanelNiveles
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
