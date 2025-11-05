@@ -49,13 +49,13 @@ public class SceneController1 : MonoBehaviour
 
         // Actualizar la UI con los datos del GameManager
         if (textoScore != null)
-            textoScore.text = $"Puntaje: {gm.score}";
+            textoScore.text = $"{gm.score}";
 
         if (textoColisiones != null)
-            textoColisiones.text = $"Colisiones: {gm.colisionesTotales}";
+            textoColisiones.text = $"{gm.colisionesTotales}";
 
         if (textoItems != null)
-            textoItems.text = $"Bolas de fuego: {gm.itemsRecogidos}";
+            textoItems.text = $"{gm.itemsRecogidos}";
 
         // 🔹 Lógica del portal (sin cambios)
         bool mostrar = gm.colisionesTotales < 3 || gm.score > 80;
