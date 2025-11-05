@@ -7509,6 +7509,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: MainCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 6736481657230916111, guid: 722d9804edd72a049a867137bfe2ea2e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8030337781201247171, guid: 722d9804edd72a049a867137bfe2ea2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.35
@@ -8302,6 +8306,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8423735748863765302, guid: 63ba1cff3f79ef646937b56299e04266, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113234377399870339, guid: 63ba1cff3f79ef646937b56299e04266, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
