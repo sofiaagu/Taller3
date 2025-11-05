@@ -16,4 +16,10 @@ public class BotonVolverMenu : MonoBehaviour
             Debug.LogError("❌ GameManager no encontrado");
         }
     }
+    public void SalirDelJuego()
+    {
+        Debug.Log("🚪 Saliendo del juego...");
+        Application.Quit();
+    }
+
 }
