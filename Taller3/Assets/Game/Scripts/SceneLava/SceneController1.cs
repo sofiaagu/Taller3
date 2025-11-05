@@ -1,50 +1,64 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class SceneController1 : MonoBehaviour
 {
-    [Header("Referencias")]
-    public GameObject portalVisual; // el modelo o efecto del portal
-    public GameManager gameManager; // referencia al GameManager
+    [Header("Referencias Generales")]
+    public GameObject portalVisual; // El modelo o efecto del portal
     public string nombreEscenaDestino = "Hielo";
 
+    [Header("Referencias de carga")]
     private LoaderScene sceneLoader;
 
-    private void Start()
+    [Header("Referencias UI")]
+    public TextMeshProUGUI textoScore;
+    public TextMeshProUGUI textoColisiones;
+    public TextMeshProUGUI textoItems; //  aquí se mostrarán las bolas de fuego
 
+    private void Start()
     {
         sceneLoader = FindAnyObjectByType<LoaderScene>();
 
         if (portalVisual == null)
-            portalVisual = gameObject; // usa el propio objeto si no se asigna
+            portalVisual = gameObject;
 
         if (sceneLoader == null)
-        {
             Debug.LogWarning("No se encontró ningún LoaderScene en la escena.");
-        }
+
+        if (GameManager.Instance == null)
+            Debug.LogWarning(" No hay un GameManager activo (asegúrate de venir desde el menú).");
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Jugador entró al portal.");
+            Debug.Log(" Jugador entró al portal.");
 
-            // Solo cambia de escena si el loader existe
             if (sceneLoader != null)
-            {
                 sceneLoader.LoaderScenes(nombreEscenaDestino);
-            }
         }
     }
 
     private void Update()
     {
-        if (gameManager == null)
+        if (GameManager.Instance == null)
             return;
 
-        // Condición: se muestra si tiene menos de 3 colisiones o más de 80 puntos
-        bool mostrar = gameManager.colisionesTotales < 3 || gameManager.score > 80;
+        GameManager gm = GameManager.Instance;
 
+        // Actualizar la UI con los datos del GameManager
+        if (textoScore != null)
+            textoScore.text = $"Puntaje: {gm.score}";
+
+        if (textoColisiones != null)
+            textoColisiones.text = $"Colisiones: {gm.colisionesTotales}";
+
+        if (textoItems != null)
+            textoItems.text = $"Bolas de fuego: {gm.itemsRecogidos}";
+
+        // 🔹 Lógica del portal (sin cambios)
+        bool mostrar = gm.colisionesTotales < 3 || gm.score > 80;
         portalVisual.SetActive(mostrar);
     }
 }

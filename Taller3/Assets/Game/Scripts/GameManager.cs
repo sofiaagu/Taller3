@@ -11,9 +11,13 @@ public class GameManager : MonoBehaviour
     public GameObject panelPrincipal;
     public GameObject panelNiveles;
 
+    [Header("Datos de juego extendidos")]
+    public int itemsRecogidos = 0;
+
+
     [Header("Nombres de escenas")]
-    public string escenaNivel1 = "Nivel1_Fuego";
-    public string escenaNivel2 = "Nivel2_Hielo";
+    public string escenaNivel1 = "Fuego";
+    public string escenaNivel2 = "Hielo";
     public string escenaMenu = "Menu";
 
     [Header("Datos del juego")]
@@ -59,6 +63,11 @@ public class GameManager : MonoBehaviour
 
         if (tValue != null)
             tValue.text = score.ToString();
+    }
+    public void RegistrarItem()
+    {
+        itemsRecogidos++;
+        Debug.Log("Items recogidos: " + itemsRecogidos);
     }
 
     public void RegistrarColision()
