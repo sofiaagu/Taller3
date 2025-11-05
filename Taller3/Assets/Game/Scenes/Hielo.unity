@@ -35797,6 +35797,8 @@ MonoBehaviour:
   vidasIniciales: 3
   panelPerdiste: {fileID: 2074052562}
   healthUI: {fileID: 2074052563}
+  sonidoMuerte: {fileID: 8300000, guid: 42a019627a26a804bbd040f5aba57366, type: 3}
+  sonidoVidaPerdida: {fileID: 8300000, guid: 4678ae0947e67574ea894b741c9c9740, type: 3}
 --- !u!1 &1766752950
 GameObject:
   m_ObjectHideFlags: 0

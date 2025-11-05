@@ -6,10 +6,15 @@ public class ObstacleCollision : MonoBehaviour
     public float tiempoEntreColisiones = 1.0f; 
     private float ultimaColision = -999f;
 
+    [Header("Efectos opcionales")]
+    public AudioClip sonidoColision;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            if (sonidoColision!= null)
+                AudioSource.PlayClipAtPoint(sonidoColision, transform.position);
             // evita múltiples detecciones seguidas
             if (Time.time - ultimaColision >= tiempoEntreColisiones)
             {

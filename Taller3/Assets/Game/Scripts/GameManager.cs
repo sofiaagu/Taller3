@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     [Header("Datos de juego extendidos")]
     public int itemsRecogidos = 0;
 
-
     [Header("Nombres de escenas")]
     public string escenaNivel1 = "Fuego";
     public string escenaNivel2 = "Hielo";
@@ -26,6 +25,14 @@ public class GameManager : MonoBehaviour
 
     [Header("UI Opcional")]
     public TextMeshProUGUI tValue; // Texto para mostrar el puntaje en pantalla
+
+    [Header("Audio General")]
+    public AudioSource musicaSource;
+    public AudioClip musicaMenu;
+    public AudioClip musicaFuego;
+    public AudioClip musicaHielo;
+
+    private string escenaActual = "";
 
     private void Awake()
     {
@@ -43,6 +50,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
+        musicaSource.volume = 1f;
+        AudioListener.volume = 1f;
         // Si hay paneles (significa que estamos en el menú principal)
         if (panelPrincipal != null && panelNiveles != null)
         {
@@ -50,9 +60,39 @@ public class GameManager : MonoBehaviour
             panelNiveles.SetActive(false);
         }
 
-        // Mostrar el cursor
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        // Suscribirse al evento de cambio de escena
+        SceneManager.activeSceneChanged += CambiarMusicaSegunEscena;
+
+        // Reproducir música del menú al iniciar
+        CambiarMusicaSegunEscena(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+    }
+
+    private void CambiarMusicaSegunEscena(Scene escenaAnterior, Scene nuevaEscena)
+    {
+        escenaActual = nuevaEscena.name;
+
+        if (musicaSource == null) return;
+
+        AudioClip clipSeleccionado = null;
+
+        if (escenaActual == escenaMenu)
+            clipSeleccionado = musicaMenu;
+        else if (escenaActual == escenaNivel1)
+            clipSeleccionado = musicaFuego;
+        else if (escenaActual == escenaNivel2)
+            clipSeleccionado = musicaHielo;
+
+        if (clipSeleccionado != null && musicaSource.clip != clipSeleccionado)
+        {
+            musicaSource.Stop();
+            musicaSource.clip = clipSeleccionado;
+            musicaSource.loop = true;
+            musicaSource.Play();
+            Debug.Log("🎵 Reproduciendo música de: " + escenaActual);
+        }
     }
 
     // 🔹 GESTIÓN DE PUNTAJE Y COLISIONES
@@ -64,6 +104,7 @@ public class GameManager : MonoBehaviour
         if (tValue != null)
             tValue.text = score.ToString();
     }
+
     public void RegistrarItem()
     {
         itemsRecogidos++;
@@ -90,7 +131,6 @@ public class GameManager : MonoBehaviour
     {
         if (panelPrincipal == null || panelNiveles == null)
         {
-            // Si estamos fuera del menú, volver a la escena principal
             SceneManager.LoadScene(escenaMenu);
         }
         else
@@ -102,6 +142,12 @@ public class GameManager : MonoBehaviour
     }
 
     // 🔹 CARGA DE NIVELES
+    public void IniciarJuego()
+    {
+        Debug.Log("Iniciando..");
+        SceneManager.LoadScene(escenaNivel1);
+    }
+
     public void CargarNivel1()
     {
         Debug.Log("Cargando Nivel 1...");

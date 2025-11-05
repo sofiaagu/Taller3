@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(AudioSource))] // 🔹 Asegura que haya un AudioSource
 public class PlayerRespawn : MonoBehaviour
 {
     [Header("Respawn Settings")]
@@ -14,13 +15,20 @@ public class PlayerRespawn : MonoBehaviour
     public GameObject panelPerdiste;
     public PlayerHealthUI healthUI;
 
+    [Header("Efectos opcionales")]
+    public AudioClip sonidoMuerte;     // 🔹 Sonido al morir completamente
+    public AudioClip sonidoVidaPerdida; // 🔹 Sonido al perder una vida
+
     private CharacterController controller;
+    private AudioSource audioSource; // 🔹 Componente para reproducir los sonidos
 
     public int CurrentLives => vidasActuales;
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
+        audioSource = GetComponent<AudioSource>();
+
         vidasActuales = vidasIniciales;
 
         // Si no hay punto de respawn, crear uno en la posición inicial
@@ -59,6 +67,10 @@ public class PlayerRespawn : MonoBehaviour
 
         Debug.Log("Vida perdida. Vidas restantes: " + vidasActuales);
 
+        // 🔊 Reproducir sonido de vida perdida (si existe)
+        if (sonidoVidaPerdida != null && audioSource != null)
+            audioSource.PlayOneShot(sonidoVidaPerdida);
+
         if (vidasActuales <= 0)
         {
             GameOver();
@@ -81,6 +93,10 @@ public class PlayerRespawn : MonoBehaviour
     private void GameOver()
     {
         Debug.Log("¡Game Over!");
+
+        // 🔊 Reproducir sonido de muerte final (si existe)
+        if (sonidoMuerte != null && audioSource != null)
+            audioSource.PlayOneShot(sonidoMuerte);
 
         if (panelPerdiste != null)
             panelPerdiste.SetActive(true);

@@ -165,5 +165,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fbaff34bb040f48bee032403294977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contadorColisiones: 0
   tiempoEntreColisiones: 1
+  sonidoColision: {fileID: 8300000, guid: 9f40bc13d45ce5046b2765bea0080754, type: 3}

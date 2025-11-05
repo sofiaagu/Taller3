@@ -10,6 +10,9 @@ public class SceneController1 : MonoBehaviour
     [Header("Referencias de carga")]
     private LoaderScene sceneLoader;
 
+    [Header("Efectos opcionales")]
+    public AudioClip sonidoTeletransporte;
+
     [Header("Referencias UI")]
     public TextMeshProUGUI textoScore;
     public TextMeshProUGUI textoColisiones;
@@ -34,6 +37,9 @@ public class SceneController1 : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log(" Jugador entró al portal.");
+
+            if (sonidoTeletransporte != null)
+                AudioSource.PlayClipAtPoint(sonidoTeletransporte, transform.position);
 
             if (sceneLoader != null)
                 sceneLoader.LoaderScenes(nombreEscenaDestino);

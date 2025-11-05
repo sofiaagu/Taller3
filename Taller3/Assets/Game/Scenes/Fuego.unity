@@ -757,6 +757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portalVisual: {fileID: 1741817585}
   nombreEscenaDestino: Hielo
+  sonidoTeletransporte: {fileID: 0}
   textoScore: {fileID: 985737557}
   textoColisiones: {fileID: 985737556}
   textoItems: {fileID: 985737555}
@@ -7123,7 +7124,7 @@ MonoBehaviour:
   "valorPeque\xF1a": 2
   valorGrande: 5
   valorFuego: 12
-  sonidoRecolectar: {fileID: 0}
+  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
   efectoRecolectar: {fileID: 0}
 --- !u!135 &353697278
 SphereCollider:
@@ -8068,7 +8069,7 @@ MonoBehaviour:
   "valorPeque\xF1a": 2
   valorGrande: 5
   valorFuego: 12
-  sonidoRecolectar: {fileID: 0}
+  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
   efectoRecolectar: {fileID: 0}
 --- !u!135 &518383942
 SphereCollider:
@@ -8282,7 +8283,7 @@ MonoBehaviour:
   "valorPeque\xF1a": 2
   valorGrande: 5
   valorFuego: 12
-  sonidoRecolectar: {fileID: 0}
+  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
   efectoRecolectar: {fileID: 0}
 --- !u!135 &519759406
 SphereCollider:
@@ -13372,7 +13373,7 @@ MonoBehaviour:
   "valorPeque\xF1a": 2
   valorGrande: 5
   valorFuego: 12
-  sonidoRecolectar: {fileID: 0}
+  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
   efectoRecolectar: {fileID: 0}
 --- !u!135 &659890373
 SphereCollider:
@@ -13748,6 +13749,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116228972}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &706591800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 706591801}
+  m_Layer: 0
+  m_Name: MenuManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &706591801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706591800}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2119.3616, y: 811.3574, z: 321.16174}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &707652168
 GameObject:
@@ -23930,7 +23962,7 @@ MonoBehaviour:
   "valorPeque\xF1a": 2
   valorGrande: 5
   valorFuego: 12
-  sonidoRecolectar: {fileID: 0}
+  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
   efectoRecolectar: {fileID: 0}
 --- !u!135 &825582277
 SphereCollider:
@@ -41498,7 +41530,7 @@ MonoBehaviour:
   "valorPeque\xF1a": 2
   valorGrande: 5
   valorFuego: 12
-  sonidoRecolectar: {fileID: 0}
+  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
   efectoRecolectar: {fileID: 0}
 --- !u!135 &1307613916
 SphereCollider:
@@ -41626,7 +41658,7 @@ MonoBehaviour:
   "valorPeque\xF1a": 2
   valorGrande: 5
   valorFuego: 12
-  sonidoRecolectar: {fileID: 0}
+  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
   efectoRecolectar: {fileID: 0}
 --- !u!135 &1322165870
 SphereCollider:
@@ -42367,7 +42399,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1157782261704780405, guid: 165b44c90adbed542acd1f9164c5012f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -244.98
+      value: -251.64
       objectReference: {fileID: 0}
     - target: {fileID: 1157782261704780405, guid: 165b44c90adbed542acd1f9164c5012f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -42375,7 +42407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1157782261704780405, guid: 165b44c90adbed542acd1f9164c5012f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -29.33
+      value: -27.9
       objectReference: {fileID: 0}
     - target: {fileID: 1157782261704780405, guid: 165b44c90adbed542acd1f9164c5012f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -42465,6 +42497,8 @@ MonoBehaviour:
   vidasIniciales: 3
   panelPerdiste: {fileID: 985737553}
   healthUI: {fileID: 1973507288}
+  sonidoMuerte: {fileID: 8300000, guid: 42a019627a26a804bbd040f5aba57366, type: 3}
+  sonidoVidaPerdida: {fileID: 8300000, guid: 4678ae0947e67574ea894b741c9c9740, type: 3}
 --- !u!136 &1441083335
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -53391,7 +53425,7 @@ GameObject:
   - component: {fileID: 1741817586}
   - component: {fileID: 1741817590}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53501,6 +53535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portalVisual: {fileID: 0}
   nombreEscenaDestino: Hielo
+  sonidoTeletransporte: {fileID: 8300000, guid: 1d38d37eee67af349a0f6bd0c7221740, type: 3}
   textoScore: {fileID: 0}
   textoColisiones: {fileID: 0}
   textoItems: {fileID: 0}
@@ -63957,7 +63992,7 @@ MonoBehaviour:
   "valorPeque\xF1a": 2
   valorGrande: 5
   valorFuego: 12
-  sonidoRecolectar: {fileID: 0}
+  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
   efectoRecolectar: {fileID: 0}
 --- !u!135 &1915789686
 SphereCollider:
@@ -74076,7 +74111,7 @@ MonoBehaviour:
   "valorPeque\xF1a": 2
   valorGrande: 5
   valorFuego: 12
-  sonidoRecolectar: {fileID: 0}
+  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
   efectoRecolectar: {fileID: 0}
 --- !u!135 &2025331799
 SphereCollider:
@@ -74376,7 +74411,7 @@ MonoBehaviour:
   "valorPeque\xF1a": 2
   valorGrande: 5
   valorFuego: 12
-  sonidoRecolectar: {fileID: 0}
+  sonidoRecolectar: {fileID: 8300000, guid: 2104afe638506194e9442ad0d514b949, type: 3}
   efectoRecolectar: {fileID: 0}
 --- !u!135 &2067962700
 SphereCollider:
@@ -74826,6 +74861,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1513608352}
     m_Modifications:
+    - target: {fileID: 361716716331554219, guid: 8657b8f3e8378624caf158267585363e, type: 3}
+      propertyPath: sonidoColision
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f40bc13d45ce5046b2765bea0080754, type: 3}
     - target: {fileID: 647443202401107270, guid: 8657b8f3e8378624caf158267585363e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -239.1
@@ -74912,3 +74951,4 @@ SceneRoots:
   - {fileID: 655194899}
   - {fileID: 1741817589}
   - {fileID: 1055207849}
+  - {fileID: 706591801}
